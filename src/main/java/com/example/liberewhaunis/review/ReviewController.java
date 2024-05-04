@@ -20,7 +20,7 @@ public class ReviewController {
 
     @GetMapping("/reviews/latest")
     public ResponseEntity<?> getLatestReviews() {
-        List<ReviewListDto> latestReviews = reviewService.getLatestReviews();
+        List<ReviewResponseDto> latestReviews = reviewService.getLatestReviews();
         return (latestReviews != null)?
                 ResponseEntity.status(HttpStatus.OK).body(latestReviews):
                 ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");
@@ -28,7 +28,7 @@ public class ReviewController {
 
     @GetMapping("/reviews/best")
     public ResponseEntity<?> getBestReviews() {
-        List<ReviewListDto> bestReviews = reviewService.getBestReviews();
+        List<ReviewResponseDto> bestReviews = reviewService.getBestReviews();
         return (bestReviews != null)?
                 ResponseEntity.status(HttpStatus.OK).body(bestReviews):
                 ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");

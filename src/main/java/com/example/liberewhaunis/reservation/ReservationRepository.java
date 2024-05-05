@@ -14,4 +14,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
     @Query(name="Reservation.findAllList", nativeQuery = true)
     List<ReservationListDto> findAllList();
+
+    @Override
+    @Query(value = "SELECT * FROM reservation ORDER BY date, time, created_at", nativeQuery = true)
+    List<Reservation> findAll();
 }

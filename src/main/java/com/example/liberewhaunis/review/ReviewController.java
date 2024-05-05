@@ -50,7 +50,7 @@ public class ReviewController {
                 ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");
     }
 
-    @PostMapping("/reviews/add")
+    @PostMapping(value = "/reviews/add", consumes = {"multipart/form-data"})
     public ResponseEntity<?> addReview(@RequestPart(name="data") ReviewDto reviewDto, @RequestPart(name="file", required = false) List<MultipartFile> multipartFilelist) {
         List<ReviewImage> reviewImages;
         // 1. 리뷰 등록

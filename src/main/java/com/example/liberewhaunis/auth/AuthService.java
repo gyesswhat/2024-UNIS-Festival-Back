@@ -5,6 +5,7 @@ import com.example.liberewhaunis.reservation.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,14 @@ public class AuthService {
     public List<AuthResponseDto> showAuthReservations() {
         List<AuthResponseDto> authReservations = new ArrayList<>();
         List<Reservation> allReservations = reservationRepository.findAll();
+        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime endTime = LocalDateTime.of(2024,5,9,17,30);
         for (Reservation reservation : allReservations) {
+            if (currentTime.getDayOfMonth()==9 && reservation.getDate()==1) continue;
+            if (currentTime.getDayOfMonth()==10) {
+                if (currentTime.isBefore(endTime) && reservation.getDate()==1) continue;
+                if (currentTime.isBefore(endTime) && reservation.getDate()==2) continue;
+            }
             // 1. DTO 생성
             AuthResponseDto dto = new AuthResponseDto(
                     reservation.getDate() + 7 + "",
@@ -30,13 +38,13 @@ public class AuthService {
                     reservation.getCustomerPhone()
             );
 
-            // 2. 시간대 문자열 변환
+            // 3. 시간대 문자열 변환
             if (dto.getTime().equals("1")) dto.setTime("아침(11:00)");
             else if (dto.getTime().equals("2")) dto.setTime("점심(12:30)");
             else if (dto.getTime().equals("3")) dto.setTime("간식(14:00)");
             else dto.setTime("저녁(17:00)");
 
-            // 3. 리스트에 추가
+            // 4. 리스트에 추가
             authReservations.add(dto);
         }
         return authReservations;

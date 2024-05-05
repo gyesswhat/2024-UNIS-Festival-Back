@@ -34,6 +34,22 @@ public class ReviewController {
                 ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");
     }
 
+    @GetMapping("/reviews/latest/brief")
+    public ResponseEntity<?> getLatestReviewsBrief() {
+        List<BriefReviewResponseDto> latestReviewsBrief = reviewService.getLatestReviewsBrief();
+        return (latestReviewsBrief != null)?
+                ResponseEntity.status(HttpStatus.OK).body(latestReviewsBrief):
+                ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");
+    }
+
+    @GetMapping("/reviews/best/brief")
+    public ResponseEntity<?> getBestReviewsBrief() {
+        List<BriefReviewResponseDto> bestReviewsBrief = reviewService.getBestReviewsBrief();
+        return (bestReviewsBrief != null)?
+                ResponseEntity.status(HttpStatus.OK).body(bestReviewsBrief):
+                ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");
+    }
+
     @PostMapping("/reviews/add")
     public ResponseEntity<?> addReview(@RequestPart(name="data") ReviewDto reviewDto, @RequestPart(name="file", required = false) List<MultipartFile> multipartFilelist) {
         List<ReviewImage> reviewImages;
@@ -44,9 +60,8 @@ public class ReviewController {
         if (multipartFilelist != null) {
             reviewImages = s3Service.addReviewImages(review, multipartFilelist);
             if (reviewImages == null) return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("사진 등록에 실패했습니다.");
-            else return ResponseEntity.status(HttpStatus.OK).body(reviewImages);
         }
         // 3. 응답
-        return ResponseEntity.status(HttpStatus.OK).body(review);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

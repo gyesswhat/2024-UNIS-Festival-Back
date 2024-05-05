@@ -36,6 +36,22 @@ public class ReviewService {
         return null;
     }
 
+    public List<BriefReviewResponseDto> getLatestReviewsBrief() {
+        List<ReviewListDto> sortedReviews = reviewRepository.findLatestReviews();
+        List<BriefReviewResponseDto> latestReviewsBrief = new ArrayList<>();
+        for (int i=0; i<5; i++)
+            latestReviewsBrief.add(new BriefReviewResponseDto(
+                    sortedReviews.get(i).getReviewId(),
+                    sortedReviews.get(i).getTitle(),
+                    sortedReviews.get(i).getRating()
+            ));
+        return latestReviewsBrief;
+    }
+
+    public List<BriefReviewResponseDto> getBestReviewsBrief() {
+        return null;
+    }
+
     public Review addReview(ReviewDto reviewDto) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String createdAt = LocalDateTime.now().format(formatter);

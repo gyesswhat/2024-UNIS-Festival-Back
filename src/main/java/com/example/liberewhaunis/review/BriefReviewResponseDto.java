@@ -10,5 +10,6 @@ import lombok.Setter;
 public class BriefReviewResponseDto {
     private Integer reviewId;
     private String title;
+    private String body;
     private Float rating;
 }

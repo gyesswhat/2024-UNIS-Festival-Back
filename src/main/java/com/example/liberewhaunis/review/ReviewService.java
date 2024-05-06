@@ -43,6 +43,7 @@ public class ReviewService {
             latestReviewsBrief.add(new BriefReviewResponseDto(
                     sortedReviews.get(i).getReviewId(),
                     sortedReviews.get(i).getTitle(),
+                    sortedReviews.get(i).getBody(),
                     sortedReviews.get(i).getRating()
             ));
         return latestReviewsBrief;

@@ -4,6 +4,8 @@
 > UNIS 대동제 홈페이지 백엔드 레포지토리입니다.
 
 <a href="https://docs.google.com/spreadsheets/d/1tEpwZgMzu_iFQC6BAYGZXBKJZvgFv2XsdHRnVcNun0A/edit?usp=sharing">![Static Badge](https://img.shields.io/badge/API%20%EB%AA%85%EC%84%B8%EC%84%9C-%23016FFB?style=for-the-badge)</a>
+<a href="https://www.notion.so/unis-5th/DB-1e7d4f415f454c669234460c81a454ee?pvs=4">![Static Badge](https://img.shields.io/badge/DB%20%EC%84%A4%EA%B3%84-%23016FFB?style=for-the-badge)</a>
+<a href="https://github.com/aoqlsdl/2024-UNIS-Festival-Front">![Static Badge](https://img.shields.io/badge/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20repo-%23016FFB?style=for-the-badge)</a>
 
 
 

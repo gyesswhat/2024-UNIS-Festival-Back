@@ -20,19 +20,19 @@ public class ReservationService {
                     LocalDateTime.of(2024, 5, 8, 10, 30),
                     LocalDateTime.of(2024, 5, 8, 12, 00),
                     LocalDateTime.of(2024, 5, 8, 13, 30),
-                    LocalDateTime.of(2024, 5, 8, 16, 30)
+                    LocalDateTime.of(2024, 5, 8, 15, 30)
             },
             {
                     LocalDateTime.of(2024, 5, 9, 10, 30),
                     LocalDateTime.of(2024, 5, 9, 12, 00),
                     LocalDateTime.of(2024, 5, 9, 13, 30),
-                    LocalDateTime.of(2024, 5, 9, 16, 30)
+                    LocalDateTime.of(2024, 5, 9, 15, 30)
             },
             {
                     LocalDateTime.of(2024, 5, 10, 10, 30),
                     LocalDateTime.of(2024, 5, 10, 12, 00),
                     LocalDateTime.of(2024, 5, 10, 13, 30),
-                    LocalDateTime.of(2024, 5, 10, 16, 30)
+                    LocalDateTime.of(2024, 5, 10, 15, 30)
             }
     };
 
@@ -65,12 +65,12 @@ public class ReservationService {
         // 1. 조건 검증
         LocalDateTime currentTime = LocalDateTime.now();
         int date = reservationRequestDto.getDate() - 1;
-        int time=0;
+        int time=4;
         if (reservationRequestDto.getTime().equals("AM 11:00")) time=0;
         else if (reservationRequestDto.getTime().equals("PM 12:30")) time=1;
         else if (reservationRequestDto.getTime().equals("PM 2:30")) time=2;
-        else if (reservationRequestDto.getTime().equals("PM 5:00")) time=3;
-        if (date>2 || date<0) return null;
+        else if (reservationRequestDto.getTime().equals("PM 4:00")) time=3;
+        if (date>2 || date<0 || time==4) return null;
         if (currentTime.isBefore(compareTimes[date][time]) && reservationRepository.countReservations(date+1, time+1) < 10) {
             // 2. 엔티티 생성
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

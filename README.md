@@ -22,6 +22,8 @@
 ### Deploy
 ![Static Badge](https://img.shields.io/badge/amazon%20ec2-%23FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/amazon%20rds-%23527FFF?style=for-the-badge&logo=amazonrds&logoColor=white) ![Static Badge](https://img.shields.io/badge/amazon%20s3-%23569A31?style=for-the-badge&logo=amazons3&logoColor=white)
+![Static Badge](https://img.shields.io/badge/amazon%20route%2053-%238C4FFF?style=for-the-badge&logo=amazonroute53&logoColor=white)
+
 
 ## 🦕 Folder Structure
 ```

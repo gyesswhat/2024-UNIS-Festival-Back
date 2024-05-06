@@ -13,7 +13,7 @@
 ![Static Badge](https://img.shields.io/badge/java-%235382a1?style=for-the-badge&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/spring%20boot-%236DB33F?style=for-the-badge&logo=springboot&logoColor=white)
 
-### RBDMS
+### RDBMS
 ![Static Badge](https://img.shields.io/badge/mysql-%234479A1?style=for-the-badge&logo=mysql&logoColor=white) 
 
 ### Build

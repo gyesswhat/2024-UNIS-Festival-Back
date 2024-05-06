@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class ReservationRequestDto {
     private Integer date;
-    private Integer time;
+    private String time;
     private Integer menu1;
     private Integer menu2;
     private Integer menu3;

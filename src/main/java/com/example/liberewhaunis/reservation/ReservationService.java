@@ -65,8 +65,12 @@ public class ReservationService {
         // 1. 조건 검증
         LocalDateTime currentTime = LocalDateTime.now();
         int date = reservationRequestDto.getDate() - 1;
-        int time = reservationRequestDto.getTime() - 1;
-        if (date>2 || date<0 || time>3 || time<0) return null;
+        int time=0;
+        if (reservationRequestDto.getTime().equals("AM 11:00")) time=0;
+        else if (reservationRequestDto.getTime().equals("PM 12:30")) time=1;
+        else if (reservationRequestDto.getTime().equals("PM 2:30")) time=2;
+        else if (reservationRequestDto.getTime().equals("PM 5:00")) time=3;
+        if (date>2 || date<0) return null;
         if (currentTime.isBefore(compareTimes[date][time]) && reservationRepository.countReservations(date+1, time+1) < 10) {
             // 2. 엔티티 생성
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -75,7 +79,7 @@ public class ReservationService {
                     null,
                     createdAt,
                     reservationRequestDto.getDate(),
-                    reservationRequestDto.getTime(),
+                    time+1,
                     reservationRequestDto.getCustomerName(),
                     reservationRequestDto.getCustomerPhone(),
                     reservationRequestDto.getMenu1(),

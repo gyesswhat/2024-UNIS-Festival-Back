@@ -42,7 +42,7 @@ public class AuthService {
             if (dto.getTime().equals("1")) dto.setTime("아침(11:00)");
             else if (dto.getTime().equals("2")) dto.setTime("점심(12:30)");
             else if (dto.getTime().equals("3")) dto.setTime("간식(14:00)");
-            else dto.setTime("저녁(17:00)");
+            else dto.setTime("저녁(16:00)");
 
             // 4. 리스트에 추가
             authReservations.add(dto);

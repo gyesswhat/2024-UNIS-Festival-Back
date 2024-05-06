@@ -1,6 +1,14 @@
+
 # UNIS :: 2024 대동제 홈페이지
 
-> UNIS 대동제 홈페이지 백엔드 레포지토리입니다.
+UNIS 대동제 홈페이지 백엔드 레포지토리입니다.
+
+
+## 🦕 주요 문서
+
+<a href="https://docs.google.com/spreadsheets/d/1tEpwZgMzu_iFQC6BAYGZXBKJZvgFv2XsdHRnVcNun0A/edit?usp=sharing">![Static Badge](https://img.shields.io/badge/API%20%EB%AA%85%EC%84%B8%EC%84%9C-%23016FFB?style=for-the-badge)</a>
+
+
 
 ## 🦕 Stacks
 

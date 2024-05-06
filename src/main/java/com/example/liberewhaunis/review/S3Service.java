@@ -3,8 +3,7 @@ package com.example.liberewhaunis.review;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.transfer.TransferManager;
-import com.amazonaws.services.s3.transfer.Upload;
+import com.amazonaws.services.s3.model.PutObjectResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -40,12 +40,12 @@ public class S3Service {
                 String fileName = dirName + "-" + i + extension;
 
                 // 2. S3에 파일 업로드
-                TransferManager transferManager = new TransferManager(amazonS3);
                 ObjectMetadata metadata = new ObjectMetadata();
                 metadata.setContentType(multipartFile.getContentType());
-                PutObjectRequest request = new PutObjectRequest(bucket, fileName, multipartFile.getInputStream(), metadata);
-                Upload upload = transferManager.upload(request);
-                upload.waitForCompletion();
+                InputStream inputStream = multipartFile.getInputStream();
+                PutObjectRequest request = new PutObjectRequest(bucket, fileName, inputStream, metadata);
+                PutObjectResult result = amazonS3.putObject(request);
+
                 String fileUrl = amazonS3.getUrl(bucket, fileName).toString();
 
                 // 3. 엔티티 저장
@@ -58,9 +58,8 @@ public class S3Service {
 
             return files;
 
-        }
-        catch (Exception e)
-        {
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle exception properly
             return null;
         }
 

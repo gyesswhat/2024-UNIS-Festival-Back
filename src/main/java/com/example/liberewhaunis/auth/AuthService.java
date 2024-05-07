@@ -17,14 +17,7 @@ public class AuthService {
     public List<AuthResponseDto> showAuthReservations() {
         List<AuthResponseDto> authReservations = new ArrayList<>();
         List<Reservation> allReservations = reservationRepository.findAll();
-        LocalDateTime currentTime = LocalDateTime.now();
-        LocalDateTime endTime = LocalDateTime.of(2024,5,9,17,30);
         for (Reservation reservation : allReservations) {
-            if (currentTime.getDayOfMonth()==9 && reservation.getDate()==1) continue;
-            if (currentTime.getDayOfMonth()==10) {
-                if (currentTime.isBefore(endTime) && reservation.getDate()==1) continue;
-                if (currentTime.isBefore(endTime) && reservation.getDate()==2) continue;
-            }
             // 1. DTO 생성
             AuthResponseDto dto = new AuthResponseDto(
                     reservation.getDate() + 7 + "",

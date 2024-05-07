@@ -63,6 +63,8 @@ public class ReservationService {
     // 새로운 예약 등록
     public Reservation addReservation(ReservationRequestDto reservationRequestDto) {
         // 1. 조건 검증
+        if (reservationRequestDto.getTime()==null || reservationRequestDto.getDate()==null || reservationRequestDto.getCustomerPhone()==null || reservationRequestDto.getCustomerName()==null) return null;
+
         LocalDateTime currentTime = LocalDateTime.now();
         int date = reservationRequestDto.getDate() - 1;
         int time=4;

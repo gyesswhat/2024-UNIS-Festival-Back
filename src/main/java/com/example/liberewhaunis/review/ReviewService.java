@@ -54,6 +54,7 @@ public class ReviewService {
     }
 
     public Review addReview(ReviewDto reviewDto) {
+        if (reviewDto.getTitle()==null || reviewDto.getBody()==null || reviewDto.getPassword()==null || reviewDto.getRating()==null || reviewDto.getNickname()==null) return null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String createdAt = LocalDateTime.now().format(formatter);
         Review review = new Review(

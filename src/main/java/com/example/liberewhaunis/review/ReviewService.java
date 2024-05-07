@@ -32,10 +32,6 @@ public class ReviewService {
         return latestReviews;
     }
 
-    public List<ReviewResponseDto> getBestReviews() {
-        return null;
-    }
-
     public List<BriefReviewResponseDto> getLatestReviewsBrief() {
         List<ReviewListDto> sortedReviews = reviewRepository.findLatestReviews();
         List<BriefReviewResponseDto> latestReviewsBrief = new ArrayList<>();
@@ -47,10 +43,6 @@ public class ReviewService {
                     sortedReviews.get(i).getRating()
             ));
         return latestReviewsBrief;
-    }
-
-    public List<BriefReviewResponseDto> getBestReviewsBrief() {
-        return null;
     }
 
     public Review addReview(ReviewDto reviewDto) {
@@ -67,7 +59,8 @@ public class ReviewService {
                 reviewDto.getBody(),
                 reviewDto.getRating(),
                 reviewDto.getNickname(),
-                reviewDto.getPassword()
+                reviewDto.getPassword(),
+                reviewDto.getCustomerPhone()
         );
         return reviewRepository.save(review);
     }

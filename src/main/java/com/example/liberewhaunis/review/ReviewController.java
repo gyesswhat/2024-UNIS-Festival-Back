@@ -26,27 +26,11 @@ public class ReviewController {
                 ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");
     }
 
-    @GetMapping("/reviews/best")
-    public ResponseEntity<?> getBestReviews() {
-        List<ReviewResponseDto> bestReviews = reviewService.getBestReviews();
-        return (bestReviews != null)?
-                ResponseEntity.status(HttpStatus.OK).body(bestReviews):
-                ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");
-    }
-
     @GetMapping("/reviews/latest/brief")
     public ResponseEntity<?> getLatestReviewsBrief() {
         List<BriefReviewResponseDto> latestReviewsBrief = reviewService.getLatestReviewsBrief();
         return (latestReviewsBrief != null)?
                 ResponseEntity.status(HttpStatus.OK).body(latestReviewsBrief):
-                ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");
-    }
-
-    @GetMapping("/reviews/best/brief")
-    public ResponseEntity<?> getBestReviewsBrief() {
-        List<BriefReviewResponseDto> bestReviewsBrief = reviewService.getBestReviewsBrief();
-        return (bestReviewsBrief != null)?
-                ResponseEntity.status(HttpStatus.OK).body(bestReviewsBrief):
                 ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("아직 리뷰가 없습니다.");
     }
 

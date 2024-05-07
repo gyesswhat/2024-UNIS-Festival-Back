@@ -57,4 +57,6 @@ public class Review {
     private String nickname;
     @Column
     private String password;
+    @Column
+    private String customerPhone;
 }

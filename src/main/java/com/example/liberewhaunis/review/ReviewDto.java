@@ -15,4 +15,5 @@ public class ReviewDto {
     private Float rating;
     private String nickname;
     private String password;
+    private String customerPhone;
 }

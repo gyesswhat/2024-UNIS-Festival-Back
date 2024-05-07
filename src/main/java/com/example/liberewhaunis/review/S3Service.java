@@ -42,6 +42,7 @@ public class S3Service {
                 // 2. S3에 파일 업로드
                 ObjectMetadata metadata = new ObjectMetadata();
                 metadata.setContentType(multipartFile.getContentType());
+                metadata.setContentLength(multipartFile.getSize()); // 파일의 크기를 명시적으로 지정
                 InputStream inputStream = multipartFile.getInputStream();
                 PutObjectRequest request = new PutObjectRequest(bucket, fileName, inputStream, metadata);
                 PutObjectResult result = amazonS3.putObject(request);

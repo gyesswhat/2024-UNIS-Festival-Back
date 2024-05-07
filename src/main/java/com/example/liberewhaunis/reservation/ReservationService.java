@@ -63,7 +63,7 @@ public class ReservationService {
     // 새로운 예약 등록
     public Reservation addReservation(ReservationRequestDto reservationRequestDto) {
         // 1. 조건 검증
-        if (reservationRequestDto.getTime()==null || reservationRequestDto.getDate()==null || reservationRequestDto.getCustomerPhone()==null || reservationRequestDto.getCustomerName()==null) return null;
+        if (reservationRequestDto.getCustomerPhone().equals("") || reservationRequestDto.getCustomerName().equals("")) return null;
 
         LocalDateTime currentTime = LocalDateTime.now();
         int date = reservationRequestDto.getDate() - 1;
@@ -72,6 +72,7 @@ public class ReservationService {
         else if (reservationRequestDto.getTime().equals("PM 12:30")) time=1;
         else if (reservationRequestDto.getTime().equals("PM 2:30")) time=2;
         else if (reservationRequestDto.getTime().equals("PM 4:00")) time=3;
+        else return null;
         if (date>2 || date<0 || time==4) return null;
         if (currentTime.isBefore(compareTimes[date][time]) && reservationRepository.countReservations(date+1, time+1) < 10) {
             // 2. 엔티티 생성

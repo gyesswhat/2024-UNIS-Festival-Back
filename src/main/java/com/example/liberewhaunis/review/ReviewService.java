@@ -54,7 +54,10 @@ public class ReviewService {
     }
 
     public Review addReview(ReviewDto reviewDto) {
-        if (reviewDto.getTitle()==null || reviewDto.getBody()==null || reviewDto.getPassword()==null || reviewDto.getRating()==null || reviewDto.getNickname()==null) return null;
+        if (reviewDto.getTitle().equals("") || reviewDto.getBody().equals("") || reviewDto.getPassword().equals("") || reviewDto.getNickname().equals("")) return null;
+        if (reviewDto.getRating()>5.0 || reviewDto.getRating()<0.0) return null;
+        String pattern = "\\d+";
+        if (reviewDto.getPassword().length()!=4 || !reviewDto.getPassword().matches(pattern)) return null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String createdAt = LocalDateTime.now().format(formatter);
         Review review = new Review(

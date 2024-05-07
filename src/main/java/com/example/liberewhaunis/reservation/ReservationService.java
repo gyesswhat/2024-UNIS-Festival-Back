@@ -19,19 +19,19 @@ public class ReservationService {
             {
                     LocalDateTime.of(2024, 5, 8, 10, 30),
                     LocalDateTime.of(2024, 5, 8, 12, 00),
-                    LocalDateTime.of(2024, 5, 8, 13, 30),
+                    LocalDateTime.of(2024, 5, 8, 14, 00),
                     LocalDateTime.of(2024, 5, 8, 15, 30)
             },
             {
                     LocalDateTime.of(2024, 5, 9, 10, 30),
                     LocalDateTime.of(2024, 5, 9, 12, 00),
-                    LocalDateTime.of(2024, 5, 9, 13, 30),
+                    LocalDateTime.of(2024, 5, 9, 14, 00),
                     LocalDateTime.of(2024, 5, 9, 15, 30)
             },
             {
                     LocalDateTime.of(2024, 5, 10, 10, 30),
                     LocalDateTime.of(2024, 5, 10, 12, 00),
-                    LocalDateTime.of(2024, 5, 10, 13, 30),
+                    LocalDateTime.of(2024, 5, 10, 14, 00),
                     LocalDateTime.of(2024, 5, 10, 15, 30)
             }
     };
